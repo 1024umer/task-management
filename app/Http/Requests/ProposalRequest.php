@@ -11,7 +11,7 @@ class ProposalRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class ProposalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'duration' => 'required|string|max:550',
+            'amount' => 'required|string',
+            'cover' => 'required',
+            'proposal_images' => 'required|sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

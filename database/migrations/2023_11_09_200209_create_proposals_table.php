@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
+            $table->string('duration');
+            $table->string('amount');
+            $table->text('cover');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('task_id')->constrained();
             $table->timestamps();
         });
     }
