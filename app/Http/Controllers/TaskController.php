@@ -36,11 +36,13 @@ class TaskController extends Controller
         }
     }
     public function show($id){
+        // Gate::authorize('view',Task::class);
         $task = Task::where('id',$id)->with('project_cover','project_file')->first();
         return new TaskResource($task);
     }
     public function update(TaskRequest $request, Task $task){
         try{
+            // Gate::authorize('update',Task::class);
             $attr = $request->only('title','description','start_date','end_date','budget');
             $task->update($attr);
             if($request->project_cover){
@@ -56,6 +58,7 @@ class TaskController extends Controller
     }
     public function destroy(Task $task){
         try{
+            // Gate::authorize('delete',Task::class);
             $task->delete();
             return response()->json(null,204);
         }catch(\Exception $e){
