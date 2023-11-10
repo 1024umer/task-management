@@ -29,7 +29,6 @@ class SkillController extends Controller
         }
         return SkillResource::collection($query);
     }
-
     public function store(SkillRequest $request)
     {
         $arr = $request->only('name', 'slug');
@@ -42,14 +41,13 @@ class SkillController extends Controller
         return new SkillResource($skill);
     }
 
-
     public function update(SkillRequest $request, Skill $equipment)
     {
         $arr = $request->only('name', 'slug');
         $equipment->update($arr);
         return new SkillResource($equipment);
     }
-    public function destroy( $id)
+    public function destroy($id)
     {
         $skill = Skill::find($id)->delete();
         return response()->json(null, 204);
