@@ -27,6 +27,28 @@ export default [
             }
         ],
     },
+    {
+        path: '/skills/',
+        name: 'auth.skills',
+        component: () => import('../views/Skill/Main.vue'),
+        children: [
+            {
+                path: '',
+                component: () => import('../views/Skill/List.vue'),
+                name: 'auth.skills.listing'
+            },
+            {
+                path: 'add',
+                component: () => import('@/views/Skill/Form.vue'),
+                name: 'auth.skills.add'
+            },
+            {
+                path: 'edit/:id',
+                component: () => import('@/views/Skill/Form.vue'),
+                name: 'auth.skills.edit'
+            }
+        ],
+    },
     
     {
         path: '/users/',

@@ -7,8 +7,9 @@
     <div class="no-print" v-if="loggedIn">
         <v-app-bar>
             <template v-slot:prepend>
-                <v-btn icon :to="{ name: 'auth.panel' }" :link="true">
-                    <v-avatar  image="/images/logo.png"></v-avatar>
+                <v-btn color="white" :to="{ name: 'auth.panel' }" :link="true">
+                    Task Management Portal
+                    <!-- <v-avatar  image="/images/logo.png"></v-avatar> -->
                 </v-btn>
             </template>
             

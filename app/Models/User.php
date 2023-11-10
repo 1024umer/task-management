@@ -11,7 +11,8 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    protected $appends = ['image_url'];
+    protected $with = ['country'];
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'password',
         'country_id',
         'phone',
+        'skill_id',
     ];
 
     /**
@@ -46,4 +48,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+    public function image(){
+        return $this->morphOne(File::class,'fileable');
+    }
+    public function getImageUrlAttribute(){
+        if($this->image){
+            return asset($this->image->url);
+        }else{
+            return '';
+        }
+    }
+    public function skills(){
+        $skill = json_decode($this->skill_id);
+        return Skill::where('id',$skill)->get();
+    }
 }

@@ -28,7 +28,9 @@ class TaskController extends Controller
                 $this->file->create([$request->project_cover], 'project_cover', $task->id, 1);
             }
             if($request->project_file){
-                $this->file->create([$request->project_file], 'project_file', $task->id, 1);
+                foreach($request->project_file as $file){
+                    $this->file->create([$file], 'project_file', $task->id, 2);
+                }
             }
             return new TaskResource($task);
         }catch(\Exception $e){

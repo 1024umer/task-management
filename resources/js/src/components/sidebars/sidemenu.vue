@@ -15,6 +15,8 @@
             <v-list-item exact :to="{ name: 'auth.panel' }" :link="true" prepend-icon="mdi-home-city" title="Dashboard" ></v-list-item>
             <v-list-item :to="{ name: 'auth.roles.listing' }" :link="true" prepend-icon="mdi-crown" title="Roles" ></v-list-item>
             <v-list-item :to="{ name: 'auth.users.listing' }" :link="true" prepend-icon="mdi-account" title="Users" ></v-list-item>
+            <v-list-item :to="{ name: 'auth.skills.listing' }" :link="true" prepend-icon="mdi-account" title="Skills" ></v-list-item>
+
         </v-list>
     </v-navigation-drawer>
 </template>
