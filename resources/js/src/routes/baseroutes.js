@@ -55,9 +55,4 @@ export default [
         name: 'auth.profiles',
         component: () => import('../views/Profile/Form.vue'),
     },
-    {
-        path: '/upload-video/',
-        name: 'auth.uploadvideo',
-        component: () => import('../views/Profile/UploadVideo.vue'),
-    },
 ]

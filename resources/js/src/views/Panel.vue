@@ -16,7 +16,7 @@
             <v-col cols="12" class="mb-2" v-if="user.role_id==2">
               <v-row class="dash-btn">
                 <v-col sm="6" md="6" lg="6" >
-                  <v-btn block class="upload-video text-white" :to="{name: 'auth.uploadvideo'}" link >Upload Video</v-btn>
+                  <!-- <v-btn block class="upload-video text-white" :to="{name: 'auth.uploadvideo'}" link >Upload Video</v-btn> -->
                 </v-col>
                 <v-col sm="6" md="6" lg="6" class="edit-profile-button">
                   <v-btn block class="edit-profile text-white" :to="{name:'auth.profiles'}" link >Edit Profile</v-btn>
@@ -30,7 +30,7 @@
         </div>
         </div>
 
-  <v-row>
+  <!-- <v-row>
     <v-col cols="12">
           <div class="user-dashboard" v-if="user.role_id==2">
             <img src="../../../../public/images/mg-hs.png" alt="">
@@ -40,7 +40,7 @@
 			</div>
           </div>
         </v-col>
-  </v-row>
+  </v-row> -->
 </template>
 <style scoped>
 .no-print .v-toolbar {
@@ -74,7 +74,7 @@ export default {
 
   },
   async mounted() {
-    this.imgSrc = window.innerWidth > 500 ? '/images/ASMR-Webpage-Banner.jpg' : '/images/mob-img-banner.jpg' 
+    // this.imgSrc = window.innerWidth > 500 ? '/images/ASMR-Webpage-Banner.jpg' : '/images/mob-img-banner.jpg' 
 
   },
 }

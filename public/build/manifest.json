@@ -1,0 +1,131 @@
+{
+  "_default-6e6fcbfa.js": {
+    "file": "assets/default-6e6fcbfa.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_sweetalert2.all-16dd7734.js": {
+    "file": "assets/sweetalert2.all-16dd7734.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-ce7c008f.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-4ccae179.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-4ccae179.css"
+    ],
+    "dynamicImports": [
+      "resources/js/src/views/Auth/Login.vue",
+      "resources/js/src/views/Panel.vue",
+      "resources/js/src/views/Role/Main.vue",
+      "resources/js/src/views/Role/List.vue",
+      "resources/js/src/views/Role/Form.vue",
+      "resources/js/src/views/Role/Form.vue",
+      "resources/js/src/views/User/Main.vue",
+      "resources/js/src/views/User/List.vue",
+      "resources/js/src/views/User/Form.vue",
+      "resources/js/src/views/User/Form.vue",
+      "resources/js/src/views/Profile/Form.vue"
+    ],
+    "file": "assets/app-7fc8b515.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/src/views/Auth/Login.vue": {
+    "file": "assets/Login-c574a74f.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Auth/Login.vue"
+  },
+  "resources/js/src/views/Panel.css": {
+    "file": "assets/Panel-23094e17.css",
+    "src": "resources/js/src/views/Panel.css"
+  },
+  "resources/js/src/views/Panel.vue": {
+    "css": [
+      "assets/Panel-23094e17.css"
+    ],
+    "file": "assets/Panel-af618d06.js",
+    "imports": [
+      "_sweetalert2.all-16dd7734.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Panel.vue"
+  },
+  "resources/js/src/views/Profile/Form.vue": {
+    "file": "assets/Form-085fd88d.js",
+    "imports": [
+      "_default-6e6fcbfa.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Profile/Form.vue"
+  },
+  "resources/js/src/views/Role/Form.vue": {
+    "file": "assets/Form-1f71a0e2.js",
+    "imports": [
+      "_default-6e6fcbfa.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Role/Form.vue"
+  },
+  "resources/js/src/views/Role/List.vue": {
+    "file": "assets/List-54cff348.js",
+    "imports": [
+      "_default-6e6fcbfa.js",
+      "_sweetalert2.all-16dd7734.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Role/List.vue"
+  },
+  "resources/js/src/views/Role/Main.vue": {
+    "file": "assets/Main-081fdc08.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Role/Main.vue"
+  },
+  "resources/js/src/views/User/Form.vue": {
+    "file": "assets/Form-e5d3d478.js",
+    "imports": [
+      "_default-6e6fcbfa.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/User/Form.vue"
+  },
+  "resources/js/src/views/User/List.vue": {
+    "file": "assets/List-f6eef41a.js",
+    "imports": [
+      "_default-6e6fcbfa.js",
+      "_sweetalert2.all-16dd7734.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/User/List.vue"
+  },
+  "resources/js/src/views/User/Main.vue": {
+    "file": "assets/Main-e5e3f45b.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/User/Main.vue"
+  }
+}
