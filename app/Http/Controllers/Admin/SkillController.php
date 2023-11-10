@@ -20,7 +20,7 @@ class SkillController extends Controller
     }
     public function index()
     {
-        $query = $this->listRep->listFilteredQuery([ 'name', 'slug'])
+        $query = $this->listRep->listFilteredQuery(['name','slug'])
         ->select('skills.*');
         if(isset($_GET['perpage'])&&intval($_GET['perpage'])>0){
             $query=$query->paginate($_GET['perpage']);
