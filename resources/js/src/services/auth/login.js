@@ -1,7 +1,7 @@
 import axios from 'axios';
 class loginservice{
 	dologin(email,pass){
-		return axios.post(`/api/login`, {
+		return axios.post(`/api/admin-login`, {
 			email: email,
 			password: pass
 		})

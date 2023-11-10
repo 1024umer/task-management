@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
-
 return new class extends Migration
 {
     /**
@@ -24,6 +25,15 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        User::create([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'admin@taskmanagement.com',
+            'password' => Hash::make('12345678'),
+            'role_id' => 1,
+            'phone' => '34235434',
+            'country_id'=>'12',
+        ]);
     }
 
     /**

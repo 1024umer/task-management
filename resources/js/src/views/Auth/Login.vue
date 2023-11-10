@@ -3,7 +3,7 @@
     <v-container class="grey lighten-5 loginscreen col-md-6">
       <v-row>
         <v-col sm="12" md="12" lg="12">
-          <h2 class="text-center">Welcome to MG 1 Million ASMR Challenge</h2>
+          <h2 class="text-center">Welcome to Task Management Portal</h2>
         </v-col>
       </v-row>
       <v-form ref="form" v-model="loading" lazy-validation>

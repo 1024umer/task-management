@@ -1,5 +1,5 @@
 <template>
-    <!-- <sidemenu v-if="loggedIn" /> -->
+    <sidemenu v-if="loggedIn" />
 </template>
 <script>
 import sidemenu from './sidemenu.vue';
