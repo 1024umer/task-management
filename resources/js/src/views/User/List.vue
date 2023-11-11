@@ -28,41 +28,16 @@
                     <v-select item-title="text" item-value="keyt" label="City" :items="cities" v-model="city"></v-select>
                 </v-col>
             </v-row>
-            <v-data-table-server :hover="true" class="table-list" v-model:items-per-page="itemsPerPage" :headers="headers" :items-length="totalItems"
+            <v-data-table-server v-model:items-per-page="itemsPerPage" :headers="headers" :items-length="totalItems"
                 :items="serverItems" :loading="loading" item-value="id" loading-text="Loading"
                 @update:options="loadItems">
                 <template v-slot:item.role_id="{ item }">
-                    {{ item.selectable.role.title }}
-                </template>
-                <template v-slot:item.city="{ item }">
-                    <span class="text-capitalize">{{ item.selectable.city }}</span>
-                </template>
-                <template v-slot:item.video_time="{ item }">
-                    <template v-if="item.selectable.video">{{ item.selectable.video.created_at_formatted }}</template>
-                    <v-btn density="compact" v-else color="#FFE600"  size="small" class="text-black" >N/A</v-btn>
-                </template>
-                <template v-slot:item.own_mg="{ item }">
-                    <div
-                        :class="{ 'green-background': item.selectable.own_mg === 1, 'red-background': item.selectable.own_mg !== 1 }">
-                        {{ item.selectable.own_mg === 1 ? 'Yes' : 'No' }}
-                    </div>
-                </template>
-                <template v-slot:item.id="{ item }">
-                    <v-avatar  density="compact" size="32" style="border:1px solid #00000024;">
-                        <v-img class="user-img-avt" :src="item.selectable.image_url" alt="Avatar"></v-img>
-                    </v-avatar>
-                </template>
-                <template v-slot:item.video_url="{ item }">
-                    <v-btn  v-if="item.selectable.video_url" size="small" class="text-white" color="#AD025A" @click="gotoVideo(item.selectable.video_url)">Play Video</v-btn>
-                    <v-btn density="compact" v-else color="#FFE600"  size="small" class="text-black" >N/A</v-btn>
-                    <a  v-if="item.selectable.video" @click="download(item.selectable.video.full_url)" :href="item.selectable.video.full_url " download>
-                        <v-icon color="#000">mdi-download</v-icon>
-                    </a>
+                    {{ item.role.title }}
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-btn variant="text" density="compact" class="mr-2" link :to="{ name: 'auth.users.edit', params: { id: item.selectable.id } }" color="info"  size="small"
+                    <v-btn link :to="{ name: 'auth.users.edit', params: { id: item.id } }" color="info" density="comfortable" size="small"
                         icon="mdi-pencil-plus"></v-btn>
-                    <v-btn variant="text" density="compact" @click="deleteItem(item.selectable.id)" color="error" size="small" icon="mdi-delete-outline"></v-btn>
+                    <v-btn @click="deleteItem(item.id)" color="error" density="comfortable" size="small" icon="mdi-delete-outline"></v-btn>
                 </template>
             </v-data-table-server>
         </v-col>
@@ -72,7 +47,6 @@
 import service from "@services/auth/default";
 const itemtypeservice = new service('users')
 const categoryservice = new service('roles')
-import * as XLSX from 'xlsx';
 
 import Swal from "sweetalert2";
 export default {
@@ -120,40 +94,22 @@ export default {
                     key: "name",
                 },
                 {
-                    title: "Own MG HS",
+                    title: "User Name",
                     align: "center",
                     sortable: true,
-                    key: "own_mg",
-                },
-                {
-                    title: "CNIC",
-                    align: "start",
-                    sortable: true,
-                    key: "cnic",
-                },
-                {
-                    title: "City",
-                    align: "start",
-                    sortable: true,
-                    key: "city",
+                    key: "username",
                 },
                 {
                     title: "Phone",
                     align: "start",
-                    sortable: false,
+                    sortable: true,
                     key: "phone",
                 },
                 {
-                    title: "Video",
+                    title: "Role",
                     align: "start",
-                    sortable: false,
-                    key: "video_url",
-                },
-                {
-                    title: "Time of Upload",
-                    align: "start",
-                    sortable: false,
-                    key: "video_time",
+                    sortable: true,
+                    key: "role_id",
                 },
                 {
                     title: "Actions",
@@ -164,46 +120,6 @@ export default {
         }
     },
     methods: {
-            exportToXLSX() {
-            const modifiedServerItems = [...this.serverItems];
-            modifiedServerItems.forEach(item => {
-                if (item.video === null) {
-                    item.video_url = "No Video";
-                }
-            });
-            const wb = XLSX.utils.book_new();
-            const ws = XLSX.utils.json_to_sheet(modifiedServerItems);
-            XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-            const binaryData = XLSX.write(wb, {
-                bookType: 'xlsx',
-                bookSST: false,
-                type: 'binary',
-            });
-            const blob = new Blob(
-                [this.binaryConversion(binaryData)],
-                { type: 'application/octet-stream' }
-            );
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'list.xlsx';
-            a.click();
-        },
-        binaryConversion(data) {
-            const buf = new ArrayBuffer(data.length);
-            const view = new Uint8Array(buf);
-            for (let i = 0; i < data.length; i++) {
-                view[i] = data.charCodeAt(i) & 0xFF;
-            }
-            return buf;
-        },
-        downlaod(url){
-            window.location.href = url;
-        },
-        gotoVideo(url){
-            window.open(url, "_blank");
-        },
         async loadItems({ page, itemsPerPage, sortBy }) {
             this.loading = true;
             this.serverItems = []

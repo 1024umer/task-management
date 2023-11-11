@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table("users", function (Blueprint $table) {
             $table->string('skill_id')->nullable();
+            $table->dateTime('deleted_at')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table("users", function (Blueprint $table) {
             $table->dropColumn('skill_id');
+            $table->dropColumn('deleted_at');
         });
     }
 };
