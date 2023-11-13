@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\{TaskController,ProposalController};
-use App\Http\Controllers\Admin\{SkillController,UserController,RoleController};
+use App\Http\Controllers\Admin\{SkillController,UserController,RoleController,AdminTaskController,AdminProposalController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -24,10 +24,14 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 Route::group(['middleware' => ['cors', 'json.response','auth:api']], function () {
 	Route::post('/logout', [ApiAuthController::class, 'logout']);
 	Route::apiResource('task',TaskController::class);
+	Route::post('create-proposal/{id}',[ProposalController::class,'createProposal']);
+	
+	//Admin
 	Route::apiResource('skill',SkillController::class);
+	Route::apiResource('admin-task',AdminTaskController::class);
+	Route::apiResource('admin-proposal',AdminProposalController::class);
 	Route::apiResource('users',UserController::class);
 	Route::apiResource('roles',RoleController::class);
-	Route::post('create-proposal/{id}',[ProposalController::class,'createProposal']);
 });
 
 Route::group(['middleware' => ['auth:api']], function () {

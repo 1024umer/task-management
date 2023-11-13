@@ -49,7 +49,28 @@ export default [
             }
         ],
     },
-    
+    {
+        path: '/tasks/',
+        name: 'auth.tasks',
+        component: () => import('../views/Task/Main.vue'),
+        children: [
+            {
+                path: '',
+                component: () => import('../views/Task/List.vue'),
+                name: 'auth.tasks.listing'
+            },
+            {
+                path: 'add',
+                component: () => import('@/views/Task/Form.vue'),
+                name: 'auth.tasks.add'
+            },
+            {
+                path: 'edit/:id',
+                component: () => import('@/views/Task/Form.vue'),
+                name: 'auth.tasks.edit'
+            }
+        ],
+    },
     {
         path: '/users/',
         name: 'auth.users',
