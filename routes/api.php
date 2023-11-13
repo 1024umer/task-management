@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\ApiAuthController;
+use App\Http\Controllers\Auth\{ApiAuthController,ForgetPasswordController};
 use App\Http\Controllers\{TaskController,ProposalController};
 use App\Http\Controllers\Admin\{SkillController,UserController,RoleController,AdminTaskController,AdminProposalController};
 use Illuminate\Http\Request;
@@ -39,3 +39,11 @@ Route::group(['middleware' => ['auth:api']], function () {
         return $request->user();
     });
 });
+
+//Forget Password Starts here
+
+// Route::get('/forget-password', [ForgetPasswordController::class, 'index'])->name('auth.forgetPassword');
+Route::post('/otp-send', [ForgetPasswordController::class, 'otpSend'])->middleware('guest');
+Route::post('/otp-verify',[ForgetPasswordController::class,'reset'])->middleware('guest');
+Route::post('/reset-password', [ForgetPasswordController::class, 'resetPassword'])->middleware('guest');
+//Forget Password Ends here
