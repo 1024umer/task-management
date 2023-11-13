@@ -16,8 +16,8 @@
             <v-list-item :to="{ name: 'auth.roles.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-crown" title="Roles" ></v-list-item>
             <v-list-item :to="{ name: 'auth.users.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-account" title="Users" ></v-list-item>
             <v-list-item :to="{ name: 'auth.skills.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-star" title="Skills" ></v-list-item>
-            <v-list-item :to="{ name: 'auth.tasks.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-clipboard-check" title="Task" ></v-list-item>
-
+            <v-list-item :to="{ name: 'auth.tasks.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-clipboard-check" title="Tasks" ></v-list-item>
+            <v-list-item :to="{ name: 'auth.proposals.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-file-document-outline" title="Proposals" ></v-list-item>
         </v-list>
     </v-navigation-drawer>
 </template>

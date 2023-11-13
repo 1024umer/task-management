@@ -8,7 +8,7 @@
         <v-app-bar>
             <template v-slot:prepend>
                 <v-btn color="white" :to="{ name: 'auth.panel' }" :link="true">
-                    Task Management Portal
+                    <v-icon class="mr-3">mdi-door-open</v-icon>Task Management Portal
                     <!-- <v-avatar  image="/images/logo.png"></v-avatar> -->
                 </v-btn>
             </template>

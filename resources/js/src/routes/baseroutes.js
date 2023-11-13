@@ -94,8 +94,31 @@ export default [
         ],
     },
     {
+        path: '/proposals/',
+        name: 'auth.proposals',
+        component: () => import('../views/Proposal/Main.vue'),
+        children: [
+            {
+                path: '',
+                component: () => import('../views/Proposal/List.vue'),
+                name: 'auth.proposals.listing'
+            },
+            {
+                path: 'add',
+                component: () => import('@/views/Proposal/Form.vue'),
+                name: 'auth.proposals.add'
+            },
+            {
+                path: 'edit/:id',
+                component: () => import('@/views/Proposal/Form.vue'),
+                name: 'auth.proposals.edit'
+            }
+        ],
+    },
+    {
         path: '/profiles/',
         name: 'auth.profiles',
         component: () => import('../views/Profile/Form.vue'),
     },
+
 ]

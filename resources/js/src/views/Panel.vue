@@ -1,9 +1,9 @@
 <template>
   
-  <v-row class="edit-prof">
+  <!-- <v-row class="edit-prof">
     <v-img height="400px" width="100%" cover :src="imgSrc"></v-img>
    
-  </v-row>
+  </v-row> -->
   <div class="main-dashboard">
     <div class="man-dish-inner">
           <v-row>

@@ -28,6 +28,9 @@
                 <template v-slot:item.user="{ item }">
                     {{ item.user.name }}
                 </template>
+                <template v-slot:item.task="{ item }">
+                    {{ item.task.title }}
+                </template>
                 <template v-slot:item.actions="{ item }">
                     <v-btn link :to="{ name: 'auth.users.edit', params: { id: item.id } }" color="info" density="comfortable" size="small"
                         icon="mdi-pencil-plus"></v-btn>
@@ -76,22 +79,22 @@ export default {
                     key: "id",
                 },
                 {
-                    title: "Title",
+                    title: "Duration",
                     align: "start",
                     sortable: true,
-                    key: "title",
+                    key: "duration",
                 },
                 {
-                    title: "Budget",
-                    align: "start",
-                    sortable: true,
-                    key: "budget",
-                },
-                {
-                    title: "User",
+                    title: "User's Name",
                     align: "start",
                     sortable: true,
                     key: "user",
+                },
+                {
+                    title: "Task Title",
+                    align: "start",
+                    sortable: true,
+                    key: "task",
                 },
                 {
                     title: "Actions",
