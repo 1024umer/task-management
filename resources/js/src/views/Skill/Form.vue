@@ -42,6 +42,7 @@
 <script>
 import service from "@services/auth/default";
 const itemtypeservice = new service('skill')
+import Swal from "sweetalert2";
 export default {
     data() {
         return {
@@ -83,7 +84,6 @@ export default {
                 formData.append('id', this.form.id);
                 var res = await itemtypeservice.update(formData, this.form.id)
             } else {
-                formData.append('password', this.form.password);
                 var res = await itemtypeservice.create(formData)
             }
             if (!res.status) {
@@ -94,6 +94,7 @@ export default {
                     this.errors.slug = res.data.slug
                 }
             } else {
+                Swal.fire("Inserted!", "Your record has been inserted.", "success");
                 this.$router.push({ name: "auth.skills.listing" });
             }
             this.loading = false

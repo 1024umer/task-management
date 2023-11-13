@@ -104,6 +104,7 @@
 import service from "@services/auth/default";
 const itemtypeservice = new service('users')
 const rolesservice = new service('roles')
+import Swal from "sweetalert2";
 export default {
     data() {
         return {
@@ -214,6 +215,7 @@ export default {
                     this.errors.phone = res.data.phone
                 }
             } else {
+                Swal.fire("Inserted!", "Your record has been inserted.", "success");
                 this.$router.push({ name: "auth.users.listing" });
             }
             this.loading = false

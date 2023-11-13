@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
     protected $appends = ['image_url'];
-    protected $with = ['country'];
+    protected $with = ['country','role'];
     /**
      * The attributes that are mass assignable.
      *
