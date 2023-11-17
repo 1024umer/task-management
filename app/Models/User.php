@@ -58,7 +58,7 @@ class User extends Authenticatable
         if($this->image){
             return asset($this->image->url);
         }else{
-            return '';
+            return 'https://randomuser.me/api/portraits/med/men/75.jpg';
         }
     }
     public function role(){

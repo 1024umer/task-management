@@ -1,6 +1,8 @@
 <template>
-    <v-navigation-drawer expand-on-hover
-        rail>
+    <v-navigation-drawer v-model="drawer"
+        :rail="rail"
+        permanent
+        @click="rail = false">
         <!-- <template v-slot:prepend>
             <v-list-item lines="two" :prepend-avatar="user.image_url"
                 :title="user.name" :subtitle="user.email"></v-list-item>
@@ -9,8 +11,17 @@
           <v-list-item @click="openUserProfile"
           :prepend-avatar="user.image_url"
                 :title="user.name" :subtitle="user.email"
-          ></v-list-item>
+          >
+          <template v-slot:append>
+            <v-btn
+              variant="text"
+              icon="mdi-chevron-left"
+              @click.stop="rail = !rail"
+            ></v-btn>
+          </template>
+        </v-list-item>
         </v-list>
+        <v-divider></v-divider>
         <v-list density="compact" nav>
             <v-list-item exact :to="{ name: 'auth.panel' }" :link="true" active-class="active-item" prepend-icon="mdi-home-city" title="Dashboard" ></v-list-item>
             <v-list-item :to="{ name: 'auth.roles.listing' }" :link="true" active-class="active-item" prepend-icon="mdi-crown" title="Roles" ></v-list-item>
@@ -25,7 +36,8 @@
 export default {
     data: () => ({
         isNightMode: false,
-        drawer: false,
+        drawer: true,
+        rail: true,
         today_date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
     }),
     mounted() {
