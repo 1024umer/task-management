@@ -26,7 +26,7 @@ class EmployemnetController extends Controller
     }
     public function show($id){
         try{
-            $employemnt  = Employement::where([['user_id',auth()->user()->id],['id',$id]])->first();
+            $employemnt  = Employement::where('user_id',auth()->user()->id)->where('id',$id)->first();
             return new EmployementResource($employemnt);
         }catch(\Exception $e){
             return response()->json(['error'=> 'Did not find the Employement',200]);
@@ -38,7 +38,7 @@ class EmployemnetController extends Controller
             if($employement){
                 $attr = $request->only('company_name','designation','city','country_id','start_date','end_date','description','is_working');
                 $employement->update($attr);
-                $employement->save();
+                $employement->refresh();
 
                 return new EmployementResource($employement);
             }else{

@@ -26,7 +26,6 @@ class EmployementRequest extends FormRequest
             'designation' => 'required|string|max:550',
             'city' => 'required|string|max:255',
             'country_id' => 'required|exists:countries,id',
-            'user_id' => 'required|exists,users,id',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'description' => 'required|string',

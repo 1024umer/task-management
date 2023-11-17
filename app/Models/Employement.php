@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employement extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $fillable =['company_name','designation','city','country_id','start_date','end_date','description','is_working','user_id'];
     protected $with = ['user','country'];
     public function user(){

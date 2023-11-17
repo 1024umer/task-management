@@ -32,10 +32,13 @@ class EducationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Education $education,$id)
-    {
-        $education->where([['user_id',auth()->user()->id],['id',$id]])->first();
-        return new EducationResource($education);
+    public function show($id){
+        try{
+            $education  = Education::where('user_id',auth()->user()->id)->where('id',$id)->first();
+            return new EducationResource($education);
+        }catch(\Exception $e){
+            return response()->json(['error'=> 'Did not find the Education',200]);
+        }
     }
 
     /**

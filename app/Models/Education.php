@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Education extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
     protected $fillable = ['school_name','degree','area_study','start_date','end_date','user_id'];
     protected $with = ['user'];
     public function user(){
