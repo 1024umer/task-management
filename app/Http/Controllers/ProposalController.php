@@ -25,7 +25,7 @@ class ProposalController extends Controller
                 if ($request->hasFile('proposal_images')) {
                         $this->file->create([$request->proposal_images], 'proposal', $proposal->id,2);
                     }
-                return new ProposalResource($proposal);
+                return ProposalResource::collection($proposal);
             }else{
                 return response()->json(['message'=>'This proposal is no longer available',200]);
             }
