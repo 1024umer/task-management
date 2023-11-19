@@ -50,6 +50,28 @@ export default [
         ],
     },
     {
+        path: '/education/',
+        name: 'auth.education',
+        component: () => import('../views/Education/Main.vue'),
+        children: [
+            {
+                path: '',
+                component: () => import('../views/Education/List.vue'),
+                name: 'auth.education.listing'
+            },
+            {
+                path: 'add',
+                component: () => import('@/views/Education/Form.vue'),
+                name: 'auth.education.add'
+            },
+            {
+                path: 'edit/:id',
+                component: () => import('@/views/Education/Form.vue'),
+                name: 'auth.education.edit'
+            }
+        ],
+    },
+    {
         path: '/tasks/',
         name: 'auth.tasks',
         component: () => import('../views/Task/Main.vue'),
