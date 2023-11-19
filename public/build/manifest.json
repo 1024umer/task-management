@@ -1,12 +1,12 @@
 {
-  "_default-ab4fc89f.js": {
-    "file": "assets/default-ab4fc89f.js",
+  "_default-61698ed5.js": {
+    "file": "assets/default-61698ed5.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_sweetalert2.all-377af8e3.js": {
-    "file": "assets/sweetalert2.all-377af8e3.js",
+  "_sweetalert2.all-82b1f328.js": {
+    "file": "assets/sweetalert2.all-82b1f328.js",
     "imports": [
       "resources/js/app.js"
     ]
@@ -35,6 +35,10 @@
       "resources/js/src/views/Skill/List.vue",
       "resources/js/src/views/Skill/Form.vue",
       "resources/js/src/views/Skill/Form.vue",
+      "resources/js/src/views/Education/Main.vue",
+      "resources/js/src/views/Education/List.vue",
+      "resources/js/src/views/Education/Form.vue",
+      "resources/js/src/views/Education/Form.vue",
       "resources/js/src/views/Task/Main.vue",
       "resources/js/src/views/Task/List.vue",
       "resources/js/src/views/Task/Form.vue",
@@ -49,17 +53,45 @@
       "resources/js/src/views/Proposal/Form.vue",
       "resources/js/src/views/Profile/Form.vue"
     ],
-    "file": "assets/app-87b9ece9.js",
+    "file": "assets/app-b785c0d4.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/src/views/Auth/Login.vue": {
-    "file": "assets/Login-3ba2aab5.js",
+    "file": "assets/Login-00cf2068.js",
     "imports": [
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Auth/Login.vue"
+  },
+  "resources/js/src/views/Education/Form.vue": {
+    "file": "assets/Form-582deadb.js",
+    "imports": [
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Education/Form.vue"
+  },
+  "resources/js/src/views/Education/List.vue": {
+    "file": "assets/List-af061e04.js",
+    "imports": [
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Education/List.vue"
+  },
+  "resources/js/src/views/Education/Main.vue": {
+    "file": "assets/Main-4fc5c45b.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/src/views/Education/Main.vue"
   },
   "resources/js/src/views/Panel.css": {
     "file": "assets/Panel-3a3292e5.css",
@@ -69,45 +101,45 @@
     "css": [
       "assets/Panel-3a3292e5.css"
     ],
-    "file": "assets/Panel-dff503c7.js",
+    "file": "assets/Panel-b35ebd50.js",
     "imports": [
-      "_sweetalert2.all-377af8e3.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Panel.vue"
   },
   "resources/js/src/views/Profile/Form.vue": {
-    "file": "assets/Form-dabf7d09.js",
+    "file": "assets/Form-48a58366.js",
     "imports": [
-      "_default-ab4fc89f.js",
+      "_default-61698ed5.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Profile/Form.vue"
   },
   "resources/js/src/views/Proposal/Form.vue": {
-    "file": "assets/Form-e6c0e6fc.js",
+    "file": "assets/Form-982ecca2.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Proposal/Form.vue"
   },
   "resources/js/src/views/Proposal/List.vue": {
-    "file": "assets/List-a72c5378.js",
+    "file": "assets/List-74bf488d.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Proposal/List.vue"
   },
   "resources/js/src/views/Proposal/Main.vue": {
-    "file": "assets/Main-8156537d.js",
+    "file": "assets/Main-8a7fd31f.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -115,26 +147,26 @@
     "src": "resources/js/src/views/Proposal/Main.vue"
   },
   "resources/js/src/views/Role/Form.vue": {
-    "file": "assets/Form-f6513aee.js",
+    "file": "assets/Form-18a00f3c.js",
     "imports": [
-      "_default-ab4fc89f.js",
+      "_default-61698ed5.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Role/Form.vue"
   },
   "resources/js/src/views/Role/List.vue": {
-    "file": "assets/List-c6ed7f9e.js",
+    "file": "assets/List-1e7bd097.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Role/List.vue"
   },
   "resources/js/src/views/Role/Main.vue": {
-    "file": "assets/Main-1d5341b1.js",
+    "file": "assets/Main-299f286e.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -142,27 +174,27 @@
     "src": "resources/js/src/views/Role/Main.vue"
   },
   "resources/js/src/views/Skill/Form.vue": {
-    "file": "assets/Form-977f4616.js",
+    "file": "assets/Form-65bbf558.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Skill/Form.vue"
   },
   "resources/js/src/views/Skill/List.vue": {
-    "file": "assets/List-05be76f6.js",
+    "file": "assets/List-96ee0355.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Skill/List.vue"
   },
   "resources/js/src/views/Skill/Main.vue": {
-    "file": "assets/Main-2354fd48.js",
+    "file": "assets/Main-adc5effb.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -170,27 +202,27 @@
     "src": "resources/js/src/views/Skill/Main.vue"
   },
   "resources/js/src/views/Task/Form.vue": {
-    "file": "assets/Form-fc643756.js",
+    "file": "assets/Form-d9b08b51.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Task/Form.vue"
   },
   "resources/js/src/views/Task/List.vue": {
-    "file": "assets/List-7b6b6e72.js",
+    "file": "assets/List-26eeb938.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/Task/List.vue"
   },
   "resources/js/src/views/Task/Main.vue": {
-    "file": "assets/Main-72e53e53.js",
+    "file": "assets/Main-06fa61b0.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -198,27 +230,27 @@
     "src": "resources/js/src/views/Task/Main.vue"
   },
   "resources/js/src/views/User/Form.vue": {
-    "file": "assets/Form-55c4f8ec.js",
+    "file": "assets/Form-968a4867.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/User/Form.vue"
   },
   "resources/js/src/views/User/List.vue": {
-    "file": "assets/List-b2660461.js",
+    "file": "assets/List-3e38a151.js",
     "imports": [
-      "_default-ab4fc89f.js",
-      "_sweetalert2.all-377af8e3.js",
+      "_default-61698ed5.js",
+      "_sweetalert2.all-82b1f328.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/src/views/User/List.vue"
   },
   "resources/js/src/views/User/Main.vue": {
-    "file": "assets/Main-471bde59.js",
+    "file": "assets/Main-06c826d9.js",
     "imports": [
       "resources/js/app.js"
     ],
