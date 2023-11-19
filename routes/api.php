@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\{ApiAuthController,ForgetPasswordController};
 use App\Http\Controllers\{TaskController,ProposalController,EducationController,EmployemnetController};
-use App\Http\Controllers\Admin\{SkillController,UserController,RoleController,AdminTaskController,AdminProposalController};
+use App\Http\Controllers\Admin\{AdminEducationController,SkillController,UserController,RoleController,AdminTaskController,AdminProposalController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -31,6 +31,7 @@ Route::group(['middleware' => ['cors', 'json.response','auth:api']], function ()
 	//Admin
 	Route::apiResource('skill',SkillController::class);
 	Route::apiResource('admin-task',AdminTaskController::class);
+	Route::apiResource('admin-education',AdminEducationController::class);
 	Route::apiResource('admin-proposal',AdminProposalController::class);
 	Route::apiResource('users',UserController::class);
 	Route::apiResource('roles',RoleController::class);
