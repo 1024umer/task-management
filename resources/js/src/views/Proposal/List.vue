@@ -22,7 +22,7 @@
                     <v-text-field v-model="search" label="Search" single-line hide-details></v-text-field>
                 </v-col>
             </v-row>
-            <v-data-table-server v-model:items-per-page="itemsPerPage" :headers="headers" :items-length="totalItems"
+            <v-data-table-server :hover="true" v-model:items-per-page="itemsPerPage" :headers="headers" :items-length="totalItems"
                 :items="serverItems" :loading="loading" item-value="id" loading-text="Loading"
                 @update:options="loadItems">
                 <template v-slot:item.user="{ item }">

@@ -28,7 +28,7 @@
                     <v-select item-title="text" item-value="keyt" label="City" :items="cities" v-model="city"></v-select>
                 </v-col>
             </v-row>
-            <v-data-table-server v-model:items-per-page="itemsPerPage" :headers="headers" :items-length="totalItems"
+            <v-data-table-server :hover="true" v-model:items-per-page="itemsPerPage" :headers="headers" :items-length="totalItems"
                 :items="serverItems" :loading="loading" item-value="id" loading-text="Loading"
                 @update:options="loadItems">
                 <template v-slot:item.role_id="{ item }">
