@@ -27,6 +27,11 @@ class User extends Authenticatable
         'country_id',
         'phone',
         'skill_id',
+        'college',
+        'about_me',
+        'dob',
+        'gender',
+        'is_active',
     ];
 
     /**
@@ -65,7 +70,8 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
     public function skills(){
-        $skill = json_decode($this->skill_id);
-        return Skill::where('id',$skill)->get();
+        // $skill = json_decode($this->skill_id);
+        // return Skill::where('id',$skill)->get();
+        return null;
     }
 }

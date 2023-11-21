@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\{ApiAuthController,ForgetPasswordController};
-use App\Http\Controllers\{TaskController,ProposalController,EducationController,EmployemnetController};
+use App\Http\Controllers\{ProfileController,TaskController,ProposalController,EducationController,EmployemnetController};
 use App\Http\Controllers\Admin\{AdminEducationController,SkillController,UserController,RoleController,AdminTaskController,AdminProposalController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +27,7 @@ Route::group(['middleware' => ['cors', 'json.response','auth:api']], function ()
 	Route::post('create-proposal/{id}',[ProposalController::class,'createProposal']);
 	Route::apiResource('employement',EmployemnetController::class);
 	Route::apiResource('education',EducationController::class);
+	Route::apiResource('profile',ProfileController::class);
 
 	//Admin
 	Route::apiResource('skill',SkillController::class);
