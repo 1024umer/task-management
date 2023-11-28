@@ -22,7 +22,7 @@ class ApiAuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all()], 422);
+            return response(['errors' => $validator->errors()->all()], 404);
         }
         $user = User::where('email', $request->email)->first();
         if ($user) {
@@ -32,21 +32,21 @@ class ApiAuthController extends Controller
                     $response = ['token' => $token, 'user' => $user];
                     return response($response, 200);
                 } else {
-                    $response = ["message" => "Password mismatch"];
-                    return response($response, 422);
+                    $response = ["success"=> false,"message" => "Password mismatch"];
+                    return response($response, 404);
                 }
             } else {
                 if (Hash::check($request->password, $user->password)) {
                     $token = $user->createToken('Task Management Token Grant')->accessToken;
-                    $response = ['token' => $token, 'user' => $user];
+                    $response = ['success'=> true, 'token' => $token, 'user' => $user];
                     return response($response, 200);
                 }
-                $response = ["message" => "Password doesn't match"];
-                return response($response, 422);
+                $response = ['success'=>false,"message" => "Password doesn't match"];
+                return response($response, 404);
             }
         } else {
-            $response = ["message" => 'User does not exist'];
-            return response($response, 422);
+            $response = ['success'=>false,"message" => 'User does not exist'];
+            return response($response, 404);
         }
     }
     public function adminLogin(Request $request){
@@ -62,11 +62,11 @@ class ApiAuthController extends Controller
             if ($user->is_email_verified == 1) {
                 if (Hash::check($request->password, $user->password)) {
                     $token = $user->createToken('Task Management Token Grant')->accessToken;
-                    $response = ['token' => $token, 'user' => $user];
+                    $response = ['success'=>false,'token' => $token, 'user' => $user];
                     return response($response, 200);
                 } else {
-                    $response = ["message" => "Password mismatch"];
-                    return response($response, 422);
+                    $response = ["sucess"=>false,"message" => "Password mismatch"];
+                    return response($response, 404);
                 }
             } else {
                 if (Hash::check($request->password, $user->password)) {
@@ -74,12 +74,12 @@ class ApiAuthController extends Controller
                     $response = ['token' => $token, 'user' => $user];
                     return response($response, 200);
                 }
-                $response = ["message" => "Password doesn't match"];
-                return response($response, 422);
+                $response = ["success"=>false,"message" => "Password doesn't match"];
+                return response($response, 404);
             }
         } else {
-            $response = ["message" => 'User does not exist'];
-            return response($response, 422);
+            $response = ["success"=>false,"message" => 'User does not exist'];
+            return response($response, 404);
         }
     }
     public function register(RegisterRequest $request){
@@ -98,13 +98,13 @@ class ApiAuthController extends Controller
         }
         $token = $user->createToken('Task Management Token Grant')->accessToken;
         $user_detail = User::where('id', $user->id)->first();
-        $response = ['token' => $token, 'user' => $user_detail];
+        $response = ['success'=>true,'token' => $token, 'user' => $user_detail];
         return response($response, 200);
     }
     public function logout(Request $request){
         $token = $request->user()->token();
         $token->revoke();
-        $response = ['message' => 'You have been successfully logged out!'];
+        $response = ['success'=>true,'message' => 'You have been successfully logged out!'];
         return response($response, 200);
     }
 }

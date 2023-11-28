@@ -24,16 +24,16 @@ class ForgetPasswordController extends Controller
                 'email' => 'required|email|exists:users,email',
             ]);
             if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 422);
+                return response()->json(['success'=>false,'message' => $validator->errors()], 404);
             }
             $email = $validator->validated()['email'];
             $otp = mt_rand(1000, 9999);
             Cache::put('password_reset_' . $email, $otp, now()->addMinutes(10));
             Mail::to($email)->send(new OtpMail($otp));
     
-            return response()->json(['success' => 'OTP sent successfully']);
+            return response()->json(['success'=>true,'message' => 'OTP sent successfully',200]);
         }catch(\Exception $e){
-            return response()->json(['error'=> $e->getMessage()],302);
+            return response()->json(['success'=>false,'message'=> $e->getMessage()],404);
         }
     }
     public function reset(ForgetPasswordRequest $request){
@@ -41,9 +41,9 @@ class ForgetPasswordController extends Controller
         $cachedOtp = Cache::get('password_reset_' . $request->input('email'));
         // dd($cachedOtp);
         if (!$cachedOtp || $cachedOtp != $otp) {
-            return response()->json(['error' => 'Invalid OTP']);
+            return response()->json(['success'=>false,'message' => 'Invalid OTP',404]);
         }
-        return response()->json(['success' => 'OTP Verified']);     
+        return response()->json(['success'=>true,'message' => 'OTP Verified',200]);     
     }
     public function resetPassword(ResetPasswordRequest $request){
             $data = $request->only('email', 'password', 'password_confirmation');
@@ -55,13 +55,13 @@ class ForgetPasswordController extends Controller
      
                 $user->save();
             }else{
-                return response()->json(['error'=>'There is no user exisis on the given email']);
+                return response()->json(['success'=>false,'message'=>'There is no user exisis on the given email',404]);
             }
                 // event(new PasswordReset($user));
         if ($user) {
-            return response()->json(['success'=> 'Your password has been successfully reset.']);
+            return response()->json(['success'=>true,'message'=> 'Your password has been successfully reset.',200]);
         } else {
-            return response()->json(['error'=> $user]);
+            return response()->json(['success'=>false,'message'=> $user,404]);
         }
     }
 }

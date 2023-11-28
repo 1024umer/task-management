@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\{ApiAuthController,ForgetPasswordController};
-use App\Http\Controllers\{WorkController,StatsController,ProfileController,TaskController,ProposalController,EducationController,EmployemnetController};
+use App\Http\Controllers\{CountryController,WorkController,StatsController,ProfileController,TaskController,ProposalController,EducationController,EmployemnetController};
 use App\Http\Controllers\Admin\{AdminEducationController,SkillController,UserController,RoleController,AdminTaskController,AdminProposalController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +19,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 	Route::post('/register', [ApiAuthController::class, 'register']);
 	Route::post('/login', [ApiAuthController::class, 'login']);
 	Route::post('/admin-login', [ApiAuthController::class, 'adminLogin']);
+	Route::apiResource('country',CountryController::class)->only(['index']);
 });
 
 Route::group(['middleware' => ['cors', 'json.response','auth:api']], function () {
@@ -33,7 +34,6 @@ Route::group(['middleware' => ['cors', 'json.response','auth:api']], function ()
 	Route::post('review/{$id}',[WorkController::class,'inReview']);
 	Route::post('pending/{$id}',[WorkController::class,'inPending']);
 	Route::post('completed/{$id}',[WorkController::class,'inCompleted']);
-
 	//Admin
 	Route::apiResource('skill',SkillController::class);
 	Route::apiResource('admin-task',AdminTaskController::class);

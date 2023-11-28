@@ -34,7 +34,7 @@ class TaskController extends Controller
             }
             return new TaskResource($task);
         }catch(\Exception $e){
-            return response()->json(['message'=>$e->getMessage(),302]);
+            return response()->json(['success'=>false,'message'=>$e->getMessage(),302]);
         }
     }
     public function show($id){
@@ -55,7 +55,7 @@ class TaskController extends Controller
             }
             return new TaskResource($task);
         }catch(\Exception $e){
-            return response()->json(['message'=>$e->getMessage(),302]);
+            return response()->json(['success'=>false,'message'=>$e->getMessage(),302]);
         }
     }
     public function destroy(Task $task){
@@ -64,7 +64,7 @@ class TaskController extends Controller
             $task->delete();
             return response()->json(null,204);
         }catch(\Exception $e){
-            return response()->json(['message'=>$e->getMessage(),302]);
+            return response()->json(['success'=>false,'message'=>$e->getMessage(),302]);
         }
     }
 }
