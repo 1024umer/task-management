@@ -27,10 +27,10 @@ class ProposalController extends Controller
                     }
                 return ProposalResource::collection($proposal);
             }else{
-                return response()->json(['message'=>'This proposal is no longer available',200]);
+                return response()->json(['success'=>false,'message'=>'This proposal is no longer available',302]);
             }
         }catch(\Exception $e){
-            return response()->json(['message'=>'There is some error while submitting the proposal. Please try again later!',302]);
+            return response()->json(['success'=>false,'message'=>'There is some error while submitting the proposal. Please try again later!',302]);
         }
     }
 }

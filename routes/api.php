@@ -25,6 +25,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 Route::group(['middleware' => ['cors', 'json.response','auth:api']], function () {
 	Route::post('/logout', [ApiAuthController::class, 'logout']);
 	Route::apiResource('task',TaskController::class);
+	Route::get('/task/most-recent',[TaskController::class,'mostRecent']);
 	Route::post('create-proposal/{id}',[ProposalController::class,'createProposal']);
 	Route::apiResource('employement',EmployemnetController::class);
 	Route::apiResource('education',EducationController::class);

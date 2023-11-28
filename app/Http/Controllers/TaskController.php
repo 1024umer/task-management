@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Http\Resources\TaskResource;
+use App\Models\Skill;
 use App\Models\Task;
 use Illuminate\Support\Facades\Gate;
 use App\Repositories\FileRepository;
@@ -66,5 +67,13 @@ class TaskController extends Controller
         }catch(\Exception $e){
             return response()->json(['success'=>false,'message'=>$e->getMessage(),302]);
         }
+    }
+    public function mostRecent(){
+        $task = Task::orderBy("id","desc")->with('project_file','project_cover')->latest()->take(15)->get();
+        return new TaskResource($task);
+    }
+    public function bestMatch(){
+        $ids = json_encode(auth()->user()->skill_id);
+        $skills = Skill::where('id',$ids)->get();
     }
 }
