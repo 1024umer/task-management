@@ -27,6 +27,9 @@ Route::group(['middleware' => ['cors', 'json.response','auth:api']], function ()
 	Route::apiResource('task',TaskController::class);
 	Route::get('most-recent',[TaskController::class,'mostRecent']);
 	Route::get('best-match',[TaskController::class,'bestMatch']);
+	Route::get('all-task',[TaskController::class,'all']);
+	Route::get('progress-task',[TaskController::class,'progress']);
+	Route::get('completed-task',[TaskController::class,'completed']);
 	Route::post('create-proposal/{id}',[ProposalController::class,'createProposal']);
 	Route::apiResource('employement',EmployemnetController::class);
 	Route::apiResource('education',EducationController::class);

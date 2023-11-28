@@ -92,4 +92,30 @@ class TaskController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
     }
+    public function all(){
+        $task = Task::where('user_id',auth()->user()->id)
+        ->orderBy("id","desc")->with('project_file','project_cover')->get();
+        if($task->count() > 0){
+            return new TaskResource($task);
+        }else{
+            return response()->json(['message'=>'No Task available']);
+        }    }
+    public function progress(){
+        $task = Task::where('user_id',auth()->user()->id)->where('is_progress',1)
+        ->orderBy("id","desc")->with('project_file','project_cover')->get();
+        if($task->count() > 0){
+            return new TaskResource($task);
+        }else{
+            return response()->json(['message'=>'No Progress task available']);
+        }
+    }
+    public function completed(){
+        $task = Task::where('user_id',auth()->user()->id)->where('is_completed',1)
+        ->orderBy("id","desc")->with('project_file','project_cover')->get();
+        if($task->count() > 0){
+            return new TaskResource($task);
+        }else{
+            return response()->json(['message'=>'No Completed task available']);
+        }
+    }
 }
