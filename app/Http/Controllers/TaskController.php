@@ -22,7 +22,7 @@ class TaskController extends Controller
     public function store(TaskRequest $request){
         try{
             // Gate::authorize('create',Task::class);
-            $attr = $request->only('title','description','start_date','end_date','budget');
+            $attr = $request->only('title','description','start_date','end_date','budget','skills');
             $attr['user_id'] = auth()->user()->id;
             $task = Task::create($attr);
             if($request->project_cover){
@@ -46,7 +46,7 @@ class TaskController extends Controller
     public function update(TaskRequest $request, Task $task){
         try{
             // Gate::authorize('update',Task::class);
-            $attr = $request->only('title','description','start_date','end_date','budget');
+            $attr = $request->only('title','description','start_date','end_date','budget','skills');
             $task->update($attr);
             if($request->project_cover){
                 $this->file->create([$request->project_cover], 'project_cover', $task->id, 1);
@@ -73,7 +73,25 @@ class TaskController extends Controller
         return new TaskResource($task);
     }
     public function bestMatch(){
-        $ids = json_encode(auth()->user()->skill_id);
-        $skills = Skill::where('id',$ids)->get();
+        try{
+            $userSkills = auth()->user()->skills;
+            $userSkillsArray = json_decode($userSkills, true);
+            
+            $tasks = Task::where(function ($query) use ($userSkillsArray) {
+                foreach ($userSkillsArray as $skill) {
+                    $query->orWhereJsonContains('skills', $skill);
+                }
+            })->with('project_file', 'project_cover')->get();
+            
+            if($tasks->count() > 0){
+                return new TaskResource($tasks);
+            } else {
+                return response()->json(['message' => 'No Tasks found according to your skills']);
+            }
+        } catch(\Exception $e){
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
     }
+    
+    
 }
