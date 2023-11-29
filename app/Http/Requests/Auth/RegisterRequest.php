@@ -26,7 +26,6 @@ class RegisterRequest extends FormRequest
             'username' => 'required|max:255|string',
             'email' => 'required|email|unique:App\Models\User,email',
             'password' => 'required|min:8',
-            'phone' => 'required|unique:App\Models\User,phone',
             'country_id' => 'required',
         ];
     }
