@@ -8,57 +8,43 @@ use Illuminate\Http\Request;
 
 class EducationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $education = Education::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->get();
+        $education = Education::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         return EducationResource::collection($education);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $attr = $request->only('school_name','degree','area_study','start_date','end_date');
+        $attr = $request->only('school_name', 'degree', 'area_study', 'start_date', 'end_date');
         $attr['user_id'] = auth()->user()->id;
 
         $education = Education::create($attr);
         return new EducationResource($education);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id){
-        try{
-            $education  = Education::where('user_id',auth()->user()->id)->where('id',$id)->first();
+    public function show($id)
+    {
+        try {
+            $education  = Education::where('user_id', auth()->user()->id)->where('id', $id)->first();
             return new EducationResource($education);
-        }catch(\Exception $e){
-            return response()->json(['error'=> 'Did not find the Education',200]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Did not find the Education', 200]);
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Education $education)
     {
-        $attr = $request->only('school_name','degree','area_study','start_date','end_date');
+        $attr = $request->only('school_name', 'degree', 'area_study', 'start_date', 'end_date');
         $education->update($attr);
         $education->save();
 
         return new EducationResource($education);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Education $education)
     {
         $education->delete();
-        return response()->json(null,200);
+        return response()->json(null, 200);
     }
 }
