@@ -26,7 +26,7 @@ class User extends Authenticatable
         'password',
         'country_id',
         'phone',
-        'skill_id',
+        'skills',
         'college',
         'about_me',
         'dob',

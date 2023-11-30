@@ -91,7 +91,7 @@ class ApiAuthController extends Controller
             'country_id' =>$request->country_id,
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id,
-            'skill_id' => $request->skill_id,
+            'skills' => $request->skills,
         ]);
         if($request->image){
             $this->file->create([$request->image],'users',$user->id,1);
