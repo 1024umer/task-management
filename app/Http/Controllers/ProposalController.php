@@ -25,12 +25,12 @@ class ProposalController extends Controller
                 if ($request->hasFile('proposal_images')) {
                         $this->file->create([$request->proposal_images], 'proposal', $proposal->id,2);
                     }
-                return ProposalResource::collection($proposal);
-            }else{
+                    return new ProposalResource($proposal);
+                }else{
                 return response()->json(['success'=>false,'message'=>'This proposal is no longer available',302]);
             }
         }catch(\Exception $e){
-            return response()->json(['success'=>false,'message'=>'There is some error while submitting the proposal. Please try again later!',302]);
+            return response()->json(['success'=>false,'message'=>'There is some error while creating the proposal',302]);
         }
     }
 }
