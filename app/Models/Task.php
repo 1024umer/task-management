@@ -11,7 +11,7 @@ class Task extends Model
     protected $with = ['user','project_cover','project_file'];
     protected $appends = ['project_cover','project_file'];
 
-    protected $fillable = ['title','description','start_date','end_date','budget','user_id'];
+    protected $fillable = ['title','description','start_date','end_date','budget','user_id','skills'];
     public function project_cover(){
         return $this->hasMany(File::class, 'fileable_id', 'id')->where('table_name', 'project_cover');
     }
