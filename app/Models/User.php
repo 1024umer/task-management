@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    public const ADMIN_ROLE = 1;
+    public const TEACHER_ROLE = 2;
+    public const STUDENT_ROLE = 3;
     protected $appends = ['image_url'];
     protected $with = ['country','role'];
     /**
