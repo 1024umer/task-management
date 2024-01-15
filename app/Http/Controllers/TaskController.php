@@ -6,6 +6,7 @@ use App\Http\Requests\TaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Skill;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use App\Repositories\FileRepository;
 use Illuminate\Http\Request;
@@ -26,18 +27,22 @@ class TaskController extends Controller
     {
         try {
             // Gate::authorize('create',Task::class);
-            $attr = $request->only('title', 'description', 'start_date', 'end_date', 'budget', 'skills');
-            $attr['user_id'] = auth()->user()->id;
-            $task = Task::create($attr);
-            if ($request->project_cover) {
-                $this->file->create([$request->project_cover], 'project_cover', $task->id, 1);
-            }
-            if ($request->project_file) {
-                foreach ($request->project_file as $file) {
-                    $this->file->create([$file], 'project_file', $task->id, 2);
+            if(auth()->user()->role_id == User::STUDENT_ROLE){
+                $attr = $request->only('title', 'description', 'start_date', 'end_date', 'budget', 'skills');
+                $attr['user_id'] = auth()->user()->id;
+                $task = Task::create($attr);
+                if ($request->project_cover) {
+                    $this->file->create([$request->project_cover], 'project_cover', $task->id, 1);
                 }
+                if ($request->project_file) {
+                    foreach ($request->project_file as $file) {
+                        $this->file->create([$file], 'project_file', $task->id, 2);
+                    }
+                }
+                return new TaskResource($task);
+            }else{
+                return response()->json(['message' => 'You are not allowed to create task']);
             }
-            return new TaskResource($task);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage(), 302]);
         }

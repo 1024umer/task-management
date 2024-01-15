@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\{ApiAuthController, ForgetPasswordController};
-use App\Http\Controllers\{CountryController, WorkController, StatsController, ProfileController, TaskController, ProposalController, EducationController, EmployemnetController};
+use App\Http\Controllers\{TeacherController,CountryController, WorkController, StatsController, ProfileController, TaskController, ProposalController, EducationController, EmployemnetController};
 use App\Http\Controllers\Admin\{AdminEducationController, SkillController, UserController, RoleController, AdminTaskController, AdminProposalController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +28,7 @@ Route::group(['middleware' => ['cors', 'json.response', 'auth:api']], function (
 	Route::apiResource('task', TaskController::class);
 	Route::get('most-recent', [TaskController::class, 'mostRecent']);
 	Route::get('best-match', [TaskController::class, 'bestMatch']);
-	Route::get('all-task', [TaskController::class, 'all']);
+	Route::get('my-task', [TaskController::class, 'all']);
 	Route::get('progress-task', [TaskController::class, 'progress']);
 	Route::get('completed-task', [TaskController::class, 'completed']);
 	Route::post('create-proposal/{id}', [ProposalController::class, 'createProposal']);
@@ -40,6 +40,8 @@ Route::group(['middleware' => ['cors', 'json.response', 'auth:api']], function (
 	Route::post('review/{$id}', [WorkController::class, 'inReview']);
 	Route::post('pending/{$id}', [WorkController::class, 'inPending']);
 	Route::post('completed/{$id}', [WorkController::class, 'inCompleted']);
+	Route::get('all-teachers',[TeacherController::class,'allTeachers']);
+	Route::get('single-teacher/{id}',[TeacherController::class,'singleTeacher']);
 	//Admin
 	Route::apiResource('skill', SkillController::class);
 	Route::apiResource('admin-task', AdminTaskController::class);
