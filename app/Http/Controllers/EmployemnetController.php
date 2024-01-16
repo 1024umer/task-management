@@ -11,8 +11,16 @@ class EmployemnetController extends Controller
 {
     public function index()
     {
-        $employement = Employement::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
-        return EmployementResource::collection($employement);
+        try{
+            $employement = Employement::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            if($employement->count() > 0){
+                return EmployementResource::collection($employement);
+            }else{
+                return response()->json(['status'=>false,'message'=>'No record found']);
+            }
+        }catch(\Exception $e){
+            return response()->json(['status'=>false,'message' => $e->getMessage()]);
+        }
     }
     public function store(EmployementRequest $request)
     {
@@ -30,7 +38,11 @@ class EmployemnetController extends Controller
     {
         try {
             $employemnt  = Employement::where('user_id', auth()->user()->id)->where('id', $id)->first();
-            return new EmployementResource($employemnt);
+            if($employemnt){
+                return new EmployementResource($employemnt);
+            }else{
+                return response()->json(['status'=>false,'message'=>'No record found']);
+            }
         } catch (\Exception $e) {
             return response()->json(['error' => 'Did not find the Employement', 200]);
         }
